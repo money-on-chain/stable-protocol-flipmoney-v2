@@ -1,0 +1,63 @@
+MocFlipagoExpansion, as MocCoreExpansion implementation deployed at 0x2F0E8fAee84AF4669822bAbF9498DB8dfe8Ead86
+using a governorMock for MocFlipago at: 0xf490C14646b5C38DeBD8977361e720696A16cF14
+MocTC, as CollateralToken implementation deployed at 0x3A1d7E48C86799B034EFE4CecE0E55C982EF4F3A
+CollateralTokenProxy ERC1967Proxy deployed at 0x3076d612cC9632B1B19027e325Ae58756978d61B
+MocQueue, as MocFlipagoQueue implementation deployed at 0x56113033662f45cA7021CC6b6219b86BDacb1779
+MocFlipagoQueueProxy ERC1967Proxy deployed at 0x441aC466Add97aD146f357d1EbfACD4EE57a48B3
+Whitelisting queue executor: 0xCD8A1c9aCc980ae031456573e34dC05cD7daE6e3
+MocVendors, as MocFlipagoVendors implementation deployed at 0x8B19D576E13BC54ffA08f11Cfd30d43f614402A0
+MocFlipagoVendorsProxy ERC1967Proxy deployed at 0x62a708711D68e38577822823455A2120Edf5180B
+FCMaxAbsoluteOpProvider deployed at 0x684935983787928cC7580a93aC25Bcf18C5C1883 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+FCMaxOpDifferenceProvider deployed at 0x1872ADD1405F540dE64eE8afCC5fEbecFeFb0ac7 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+Initializing MocFlipago with: {
+  initializeCoreParams: {
+    initializeBaseBucketParams: {
+      feeTokenAddress: '0x45a97b54021a3F99827641AFe1BFAE574431e6ab',
+      feeTokenPriceProviderAddress: '0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E',
+      tcTokenAddress: '0x3076d612cC9632B1B19027e325Ae58756978d61B',
+      mocFeeFlowAddress: '0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3',
+      mocAppreciationBeneficiaryAddress: '0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3',
+      protThrld: BigNumber { value: "1500000000000000000" },
+      liqThrld: BigNumber { value: "1040000000000000000" },
+      feeRetainer: BigNumber { value: "100000000000000000" },
+      tcMintFee: BigNumber { value: "1000000000000000" },
+      tcRedeemFee: BigNumber { value: "1000000000000000" },
+      swapTPforTPFee: BigNumber { value: "1000000000000000" },
+      swapTPforTCFee: BigNumber { value: "1000000000000000" },
+      swapTCforTPFee: BigNumber { value: "1000000000000000" },
+      redeemTCandTPFee: BigNumber { value: "800000000000000" },
+      mintTCandTPFee: BigNumber { value: "800000000000000" },
+      feeTokenPct: BigNumber { value: "500000000000000000" },
+      successFee: BigNumber { value: "200000000000000000" },
+      appreciationFactor: BigNumber { value: "0" },
+      bes: 86400,
+      tcInterestCollectorAddress: '0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3',
+      tcInterestRate: BigNumber { value: "50000000000000" },
+      tcInterestPaymentBlockSpan: 20160,
+      decayBlockSpan: 2880,
+      maxAbsoluteOpProviderAddress: '0x684935983787928cC7580a93aC25Bcf18C5C1883',
+      maxOpDiffProviderAddress: '0x1872ADD1405F540dE64eE8afCC5fEbecFeFb0ac7'
+    },
+    governorAddress: '0xf490C14646b5C38DeBD8977361e720696A16cF14',
+    pauserAddress: '0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca',
+    mocCoreExpansion: '0x2F0E8fAee84AF4669822bAbF9498DB8dfe8Ead86',
+    emaCalculationBlockSpan: 2880,
+    mocVendors: '0x62a708711D68e38577822823455A2120Edf5180B'
+  },
+  acTokenAddress: '0xCB46c0ddc60D18eFEB0E586C17Af6ea36452Dae0',
+  mocQueue: '0x441aC466Add97aD146f357d1EbfACD4EE57a48B3'
+}
+MocFlipago, as MocFlipago implementation deployed at 0x91C4C38e368998341Bc841E155d8B0139c571E81
+MocFlipagoProxy ERC1967Proxy deployed at 0x9b30203690068708CF2F258045f9F7ab13223C90
+Delegating CT roles to Moc
+Registering mocFlipago bucket as enqueuer: 0x9b30203690068708CF2F258045f9F7ab13223C90
+MocRC20, as GoARS implementation deployed at 0x4Fa20f19b65666926b8D0963C5aD5c65289497db
+GoARSProxy ERC1967Proxy deployed at 0x90a331E0D29fC575ef871c50E74d325CD11ceB2D
+Initializing GoARS PeggedToken...
+Adding GoARS as PeggedToken 0...
+MocRC20, as GoMXN implementation deployed at 0xc212abD8d450Dcd401683EA95692B095B9913B82
+GoMXNProxy ERC1967Proxy deployed at 0x537FE97e40F12fbFB1d38c5718dA1a77f60124A4
+Initializing GoMXN PeggedToken...
+Adding GoMXN as PeggedToken 1...
+Renouncing temp governance...
+mocCore governor is now: 0xf490C14646b5C38DeBD8977361e720696A16cF14

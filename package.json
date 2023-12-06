@@ -79,7 +79,7 @@
     "prettier:check": "prettier --config .prettierrc --check \"**/*.{js,json,md,sol,ts}\"",
     "release": "standard-version",
     "docgen": "hardhat docgen",
-    "deploy-localhost": "hardhat deploy --tags MocRifDeploy",
-    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocRifDeploy"
+    "deploy-localhost": "hardhat deploy --tags MocFlipagoDeploy",
+    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipagoDeploy"
   }
 }
