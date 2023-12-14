@@ -81,10 +81,10 @@ export const rskTestnetDeployParams: DeployParameters = {
     ],
   },
   mocAddresses: {
-    governorAddress: "", // if not provided a new GovernorMock.sol is deployed
+    governorAddress: "0x7b716178771057195bB511f0B1F7198EEE62Bc22", // if not provided a new GovernorMock.sol is deployed
     collateralAssetAddress: "0xCB46c0ddc60D18eFEB0E586C17Af6ea36452Dae0",
     pauserAddress: "0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca", // if not provided is set to deployer
-    feeTokenAddress: "0x45a97b54021a3F99827641AFe1BFAE574431e6ab",
+    feeTokenAddress: "0xf698561a2c88F4B057f1D5A5285B9cc38fE61D76",
     feeTokenPriceProviderAddress: "0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E",
     mocFeeFlowAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
     mocAppreciationBeneficiaryAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",

@@ -1,9 +1,9 @@
 // SPDX-License-Identifier: UNLICENSED
 pragma solidity 0.8.20;
 
-import { MocCARC20Deferred } from "moc-main/contracts/collateral/rc20/MocCARC20Deferred.sol";
+import { MocCARC20 } from "moc-main/contracts/collateral/rc20/MocCARC20.sol";
 
-contract MocFlipago is MocCARC20Deferred {
+contract MocFlipago is MocCARC20 {
     error protocolAlreadyMigrated();
 
 

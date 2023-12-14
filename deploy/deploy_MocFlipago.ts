@@ -7,7 +7,6 @@ import {
   deployUUPSArtifact,
   waitForTxConfirmation,
 } from "moc-main/export/scripts/utils";
-import { MocFlipago__factory, MocTC__factory } from "../typechain";
 import { getNetworkDeployParams } from "../scripts/utils";
 
 const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
@@ -45,15 +44,17 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     console.log(`pauser address for MocFlipago set at deployer: ${stopperAddress}`);
   }
 
-  // if governor address is not provided we use the mock one
+  // We need a governor Mock for intermediate protected actions
+  const governorMock = (
+    await deploy("GovernorMock", {
+      from: deployer,
+    })
+  ).address;
+  console.log(`using a governorMock for MocFlipago at: ${governorMock}`);
+  let governorProvided = true;
   if (!governorAddress) {
-    const governorMock = (
-      await deploy("GovernorMock", {
-        from: deployer,
-      })
-    ).address;
+    governorProvided = false;
     governorAddress = governorMock;
-    console.log(`using a governorMock for MocFlipago at: ${governorAddress}`);
   }
 
   const collateralTokenAddress = (
@@ -75,7 +76,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     artifactBaseName: "MocFlipagoQueue",
     contract: "MocQueue",
     initializeArgs: [
-      governorAddress,
+      governorMock,
       pauserAddress,
       queueParams.minOperWaitingBlk,
       queueParams.maxOperPerBatch,
@@ -122,6 +123,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     {
       initializeCoreParams: {
         initializeBaseBucketParams: {
+          mocQueueAddress: mocQueue.address,
           feeTokenAddress,
           feeTokenPriceProviderAddress,
           tcTokenAddress: collateralTokenAddress,
@@ -148,14 +150,13 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
           maxAbsoluteOpProviderAddress,
           maxOpDiffProviderAddress,
         },
-        governorAddress: governorAddress,
+        governorAddress: tpParams ? governorMock : governorAddress, // Use mock to add TPs
         pauserAddress: stopperAddress,
         mocCoreExpansion: deployedMocExpansionContract.address,
         emaCalculationBlockSpan: coreParams.emaCalculationBlockSpan,
         mocVendors: mocVendorsDeployed.address,
       },
       acTokenAddress: collateralAssetAddress,
-      mocQueue: mocQueue.address,
     },
   ];
 
@@ -168,16 +169,26 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   });
 
   console.log("Delegating CT roles to Moc");
+
+  const mocTCProxy = await ethers.getContractAt("MocTC", collateralTokenAddress, signer);
   // Assign TC Roles, and renounce deployer ADMIN
-  await waitForTxConfirmation(MocTC__factory.connect(collateralTokenAddress, signer).transferAllRoles(mocFlipago.address));
+  await waitForTxConfirmation(mocTCProxy.transferAllRoles(mocFlipago.address));
 
   console.log(`Registering mocFlipago bucket as enqueuer: ${mocFlipago.address}`);
   await waitForTxConfirmation(mocQueueProxy.registerBucket(mocFlipago.address, { gasLimit }));
 
-  // for testing we add some Pegged Token and then transfer governance to the real governor
-  const mocFlipagoV2 = MocFlipago__factory.connect(mocFlipago.address, signer);
+  if (governorProvided) {
+    console.log(`Restating Queue governor: ${governorAddress} after registration`);
+    await waitForTxConfirmation(
+      mocQueueProxy.changeGovernor(governorAddress, {
+        gasLimit,
+      }),
+    );
+  }
 
   if (tpParams) {
+    // for testing we add some Pegged Token and then transfer governance to the real governor
+    const mocFlipagoV2 = await ethers.getContractAt("MocFlipago", mocFlipago.address, signer);
     for (let tpParam of tpParams.tpParams) {
       if (!tpParam.priceProvider) {
         const tpPriceProvider = await deploy("PriceProviderMock", {
