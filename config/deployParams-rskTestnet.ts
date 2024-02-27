@@ -9,7 +9,7 @@ const MONTH_BLOCK_SPAN = DAY_BLOCK_SPAN * 30;
 
 const commonParams = {
   queueParams: {
-    minOperWaitingBlk: 5,
+    minOperWaitingBlk: 3,
     maxOperPerBatch: 65,
     execFeeParams: {
       tcMintExecFee: BigNumber.from("26065600000000"),
@@ -29,7 +29,7 @@ const commonParams = {
 
 export const rskTestnetDeployParams: DeployParameters = {
   coreParams: {
-    protThrld: PCT_BASE.mul(15).div(10), // 1.5
+    protThrld: PCT_BASE.mul(11).div(10), // 1.1
     liqThrld: PCT_BASE.mul(104).div(100), // 1.04
     emaCalculationBlockSpan: DAY_BLOCK_SPAN,
     successFee: PCT_BASE.mul(20).div(100), // 20%
@@ -65,17 +65,17 @@ export const rskTestnetDeployParams: DeployParameters = {
         ctarg: PCT_BASE.mul(13).div(10), // 1.3
         mintFee: PCT_BASE.div(100), // 1%
         redeemFee: PCT_BASE.div(100), // 1%
-        initialEma: PCT_BASE.mul(500), //500
+        initialEma: PCT_BASE.mul(800), // 800
         smoothingFactor: PCT_BASE.mul(1653).div(100000), // 0.01653
       },
       {
-        name: "GoMXN",
-        symbol: "GOMXN",
+        name: "GoCOP",
+        symbol: "GOCOP",
         priceProvider: "0x6951020041bFA2565877BF0eaF7f5DF039b490dC".toLowerCase(),
         ctarg: PCT_BASE.mul(13).div(10), // 1.3
         mintFee: PCT_BASE.div(100), // 1%
         redeemFee: PCT_BASE.div(100), // 1%
-        initialEma: PCT_BASE.mul(17), // 20
+        initialEma: PCT_BASE.mul(3200), // 3200
         smoothingFactor: PCT_BASE.mul(1653).div(100000), // 0.01653
       }
     ],
