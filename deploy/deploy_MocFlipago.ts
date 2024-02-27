@@ -86,11 +86,11 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   const mocQueueProxy = await ethers.getContractAt("MocQueue", mocQueue.address, signer);
 
-  // For testing environments, we whitelist deployer as executors
-  if (hre.network.tags.testnet || hre.network.tags.local) {
-    console.log(`Whitelisting queue executor: ${deployer}`);
-    await waitForTxConfirmation(mocQueueProxy.grantRole(EXECUTOR_ROLE, deployer));
-  }
+//   // For testing environments, we whitelist deployer as executors
+//   if (hre.network.tags.testnet || hre.network.tags.local) {
+//     console.log(`Whitelisting queue executor: ${deployer}`);
+//     await waitForTxConfirmation(mocQueueProxy.grantRole(EXECUTOR_ROLE, deployer));
+//   }
 
   const mocVendorsDeployed = await deployUUPSArtifact({
     hre,
