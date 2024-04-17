@@ -1,24 +1,23 @@
-MocFlipagoExpansion, as MocCoreExpansion implementation deployed at 0x4052925A4D074BBbbbcd3B7616AdCE602DD1a8F9
-using a governorMock for MocFlipago at: 0xb33179f4875E347409660F70d234C021eAc2b729
-MocTC, as CollateralToken implementation deployed at 0xC1CFB2e9F05c3Bd9F1f64Bc4E11dd415EF782854
-CollateralTokenProxy ERC1967Proxy deployed at 0x48feb376D13Fd6C9fC50673FCfEC53DFA0e1C208
-MocQueue, as MocFlipagoQueue implementation deployed at 0x91862b7e00bf2b4ddD6e602aB6EB90A9f11602F8
-MocFlipagoQueueProxy ERC1967Proxy deployed at 0xcc468F86De1C3d35b244919247F0f2b340A608CC
-Whitelisting queue executor: 0xCD8A1c9aCc980ae031456573e34dC05cD7daE6e3
-MocVendors, as MocFlipagoVendors implementation deployed at 0x7E736cA921958b352D488621C9E80A71E3374BD3
-MocFlipagoVendorsProxy ERC1967Proxy deployed at 0x3AF4EEA8327afB39E808737aD1795346E8d962C0
-FCMaxAbsoluteOpProvider deployed at 0xcD7B7115b384793a0eae313c55a21e32C810A414 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
-FCMaxOpDifferenceProvider deployed at 0x51FF81B332E3bdce377390F6A349e95849F8c260 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+MocFlipagoExpansion, as MocCoreExpansion implementation deployed at 0x87cf528519A70CE2946d1474fbE62c5Cd24852b7
+using a governorMock for MocFlipago at: 0x8363BFb311bb703E25426cDdb8018302E109A5e6
+MocTC, as CollateralToken implementation deployed at 0x5F7124a6F329d43c4FF42977087887153177b3ea
+CollateralTokenProxy ERC1967Proxy deployed at 0xD908Fa1ABfa9102Bb93121e71800ab5c79dde774
+MocQueue, as MocFlipagoQueue implementation deployed at 0x71e8388861c9aF7e33A3cDD163b976C23eA2C3bE
+MocFlipagoQueueProxy ERC1967Proxy deployed at 0x52E2384F1Ed99c13e78b65c0EA47bE3d0dF0E9fF
+MocVendors, as MocFlipagoVendors implementation deployed at 0x2a273E0fcDE65f0327CE8FB8999C57a481A0cAEd
+MocFlipagoVendorsProxy ERC1967Proxy deployed at 0x7A238D6a16adBC7d8e42cBbD934F0b0e6a58ADd6
+FCMaxAbsoluteOpProvider deployed at 0x60FD1b54706dEc7FeBC93A81876B4f60c8795621 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+FCMaxOpDifferenceProvider deployed at 0x00cb50ef5138c8f48d2B32386A582808360E824f with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
 Initializing MocFlipago with: {
   initializeCoreParams: {
     initializeBaseBucketParams: {
-      mocQueueAddress: '0xcc468F86De1C3d35b244919247F0f2b340A608CC',
+      mocQueueAddress: '0x52E2384F1Ed99c13e78b65c0EA47bE3d0dF0E9fF',
       feeTokenAddress: '0xf698561a2c88F4B057f1D5A5285B9cc38fE61D76',
       feeTokenPriceProviderAddress: '0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E',
-      tcTokenAddress: '0x48feb376D13Fd6C9fC50673FCfEC53DFA0e1C208',
+      tcTokenAddress: '0xD908Fa1ABfa9102Bb93121e71800ab5c79dde774',
       mocFeeFlowAddress: '0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3',
       mocAppreciationBeneficiaryAddress: '0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3',
-      protThrld: BigNumber { value: "1500000000000000000" },
+      protThrld: BigNumber { value: "1100000000000000000" },
       liqThrld: BigNumber { value: "1040000000000000000" },
       feeRetainer: BigNumber { value: "100000000000000000" },
       tcMintFee: BigNumber { value: "1000000000000000" },
@@ -36,29 +35,29 @@ Initializing MocFlipago with: {
       tcInterestRate: BigNumber { value: "50000000000000" },
       tcInterestPaymentBlockSpan: 20160,
       decayBlockSpan: 2880,
-      maxAbsoluteOpProviderAddress: '0xcD7B7115b384793a0eae313c55a21e32C810A414',
-      maxOpDiffProviderAddress: '0x51FF81B332E3bdce377390F6A349e95849F8c260'
+      maxAbsoluteOpProviderAddress: '0x60FD1b54706dEc7FeBC93A81876B4f60c8795621',
+      maxOpDiffProviderAddress: '0x00cb50ef5138c8f48d2B32386A582808360E824f'
     },
-    governorAddress: '0xb33179f4875E347409660F70d234C021eAc2b729',
+    governorAddress: '0x8363BFb311bb703E25426cDdb8018302E109A5e6',
     pauserAddress: '0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca',
-    mocCoreExpansion: '0x4052925A4D074BBbbbcd3B7616AdCE602DD1a8F9',
+    mocCoreExpansion: '0x87cf528519A70CE2946d1474fbE62c5Cd24852b7',
     emaCalculationBlockSpan: 2880,
-    mocVendors: '0x3AF4EEA8327afB39E808737aD1795346E8d962C0'
+    mocVendors: '0x7A238D6a16adBC7d8e42cBbD934F0b0e6a58ADd6'
   },
   acTokenAddress: '0xCB46c0ddc60D18eFEB0E586C17Af6ea36452Dae0'
 }
-MocFlipago, as MocFlipago implementation deployed at 0x267049779f49D075bfD960BF29f274a4bEd784e8
-MocFlipagoProxy ERC1967Proxy deployed at 0xD84ADBC460aeEA295d49346f9E223B503E89091d
+MocFlipago, as MocFlipago implementation deployed at 0x90894845406B003e6535686D053d288FCcC0B821
+MocFlipagoProxy ERC1967Proxy deployed at 0x9bbb9581A430F02179f363866F050079Eb58C398
 Delegating CT roles to Moc
-Registering mocFlipago bucket as enqueuer: 0xD84ADBC460aeEA295d49346f9E223B503E89091d
+Registering mocFlipago bucket as enqueuer: 0x9bbb9581A430F02179f363866F050079Eb58C398
 Restating Queue governor: 0x7b716178771057195bB511f0B1F7198EEE62Bc22 after registration
-MocRC20, as GoARS implementation deployed at 0x830FC5f1D6eC5d9D3136eA705BCeDAD8fD1fAF51
-GoARSProxy ERC1967Proxy deployed at 0x0AE66294941fdA20c336cfC57EEAF5C2c35cecB4
+MocRC20, as GoARS implementation deployed at 0x0a7a513fDaB4449f89eb23b5e2189e4AF1f2b5d1
+GoARSProxy ERC1967Proxy deployed at 0xd7F027727CD641C8860f7f4eb8316245FCDb0673
 Initializing GoARS PeggedToken...
 Adding GoARS as PeggedToken 0...
-MocRC20, as GoMXN implementation deployed at 0xBb4A03B08F7De0d66BE7d673e612E18C332110ad
-GoMXNProxy ERC1967Proxy deployed at 0xC673DABC1668726473cf163242Eb15a0cdb33cE2
-Initializing GoMXN PeggedToken...
-Adding GoMXN as PeggedToken 1...
+MocRC20, as GoCOP implementation deployed at 0x00306BdF2428E5a530e3Fc852621Ce90DA63656B
+GoCOPProxy ERC1967Proxy deployed at 0xCb7b2D549c8784bFE2Bd1bc0D6E5272686ceA091
+Initializing GoCOP PeggedToken...
+Adding GoCOP as PeggedToken 1...
 Renouncing temp governance...
 mocCore governor is now: 0x7b716178771057195bB511f0B1F7198EEE62Bc22
