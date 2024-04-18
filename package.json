@@ -1,9 +1,9 @@
 {
-  "name": "flipago-sc-protocol",
+  "name": "stable-protocol-flipmoney-v2",
   "version": "1.0.3",
   "private": true,
   "homepage": "https://www.moneyonchain.com",
-  "description": "Money on Chain main smart contract protocol Flipago implementation",
+  "description": "Money on Chain main smart contract protocol FlipMoney implementation",
   "author": "MOC Investments Corp. 2020",
   "license": "AGPL-3.0",
   "dependencies": {
@@ -79,7 +79,7 @@
     "prettier:check": "prettier --config .prettierrc --check \"**/*.{js,json,md,sol,ts}\"",
     "release": "standard-version",
     "docgen": "hardhat docgen",
-    "deploy-localhost": "hardhat deploy --tags MocFlipagoDeploy",
-    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipagoDeploy"
+    "deploy-localhost": "hardhat deploy --tags MocFlipmoneyDeploy",
+    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy"
   }
 }

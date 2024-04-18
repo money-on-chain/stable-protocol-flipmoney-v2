@@ -3,7 +3,7 @@ pragma solidity 0.8.20;
 
 import { MocCARC20 } from "moc-main/contracts/collateral/rc20/MocCARC20.sol";
 
-contract MocFlipago is MocCARC20 {
+contract MocFlipmoney is MocCARC20 {
     error protocolAlreadyMigrated();
 
 

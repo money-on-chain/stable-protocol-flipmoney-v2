@@ -1,6 +1,6 @@
-# Flipago protocol
+# FlipMoney protocol
 
-Flipago is an implementation of the Money On Chain main protocol that uses (DOC) Dollar on Chain as collateral of the system.
+FlipMoney is an implementation of the Money On Chain main protocol that uses (DOC) Dollar on Chain as collateral of the system.
 For more information, please refer to the [documentation section](https://github.com/money-on-chain/main-sc-protocol/blob/master/docs/README.md).
 
 ## Getting Started
