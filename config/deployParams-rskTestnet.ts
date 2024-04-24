@@ -63,7 +63,7 @@ export const rskTestnetDeployParams: DeployParameters = {
     tpParams: [
       {
         name: "Argentinian Peso",
-        symbol: "GOARS",
+        symbol: "ArsFlip",
         priceProvider: "0x50BCa2759A0640510D88c38A6a3b1F17c1C14d51".toLowerCase(),
         ctarg: PCT_BASE.mul(40).div(10), // 4.0
         mintFee: PCT_BASE.mul(2).div(1000), // 0.002 = 0.2%
@@ -73,7 +73,7 @@ export const rskTestnetDeployParams: DeployParameters = {
       },
       {
         name: "Colombian Peso",
-        symbol: "GOCOP",
+        symbol: "CopFlip",
         priceProvider: "0xAD84A2B815F38b3917B57863D9302086011220C4".toLowerCase(),
         ctarg: PCT_BASE.mul(40).div(10), // 4.0
         mintFee: PCT_BASE.mul(2).div(1000), // 0.002 = 0.2%
