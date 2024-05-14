@@ -18,8 +18,8 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     deployParams.deploy;
   const signer = ethers.provider.getSigner();
 
-  const deployedMocExpansionContract = await deployments.getOrNull("MocFlipagoExpansion");
-  if (!deployedMocExpansionContract) throw new Error("No MocFlipagoExpansion deployed.");
+  const deployedMocExpansionContract = await deployments.getOrNull("MocFlipmoneyExpansion");
+  if (!deployedMocExpansionContract) throw new Error("No MocFlipmoneyExpansion deployed.");
 
   let {
     collateralAssetAddress,
@@ -40,7 +40,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   if (!pauserAddress) {
     pauserAddress = deployer;
     stopperAddress = deployer;
-    console.log(`pauser address for MocFlipago set at deployer: ${stopperAddress}`);
+    console.log(`pauser address for MocFlipmoney set at deployer: ${stopperAddress}`);
   }
 
   // We need a governor Mock for intermediate protected actions
@@ -49,7 +49,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
       from: deployer,
     })
   ).address;
-  console.log(`using a governorMock for MocFlipago at: ${governorMock}`);
+  console.log(`using a governorMock for MocFlipmoney at: ${governorMock}`);
   let governorProvided = true;
   if (!governorAddress) {
     governorProvided = false;
@@ -72,7 +72,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   const mocQueue = await deployUUPSArtifact({
     hre,
-    artifactBaseName: "MocFlipagoQueue",
+    artifactBaseName: "MocFlipmoneyQueue",
     contract: "MocQueue",
     initializeArgs: [
       governorMock,
@@ -87,7 +87,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   const mocVendorsDeployed = await deployUUPSArtifact({
     hre,
-    artifactBaseName: "MocFlipagoVendors",
+    artifactBaseName: "MocFlipmoneyVendors",
     contract: "MocVendors",
     initializeArgs: [vendorsGuardianAddress, governorAddress, pauserAddress],
   });
@@ -153,11 +153,11 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     },
   ];
 
-  console.log("Initializing MocFlipago with:", initializeArgs[0]);
+  console.log("Initializing MocFlipmoney with:", initializeArgs[0]);
 
-  const mocFlipago = await deployUUPSArtifact({
+  const mocFlipmoney = await deployUUPSArtifact({
     hre,
-    contract: "MocFlipago",
+    contract: "MocFlipmoney",
     initializeArgs,
   });
 
@@ -165,10 +165,10 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   const mocTCProxy = await ethers.getContractAt("MocTC", collateralTokenAddress, signer);
   // Assign TC Roles, and renounce deployer ADMIN
-  await waitForTxConfirmation(mocTCProxy.transferAllRoles(mocFlipago.address));
+  await waitForTxConfirmation(mocTCProxy.transferAllRoles(mocFlipmoney.address));
 
-  console.log(`Registering mocFlipago bucket as enqueuer: ${mocFlipago.address}`);
-  await waitForTxConfirmation(mocQueueProxy.registerBucket(mocFlipago.address, { gasLimit }));
+  console.log(`Registering mocFlipmoney bucket as enqueuer: ${mocFlipmoney.address}`);
+  await waitForTxConfirmation(mocQueueProxy.registerBucket(mocFlipmoney.address, { gasLimit }));
 
   if (governorProvided) {
     console.log(`Restating Queue governor: ${governorAddress} after registration`);
@@ -181,7 +181,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   if (tpParams) {
     // for testing we add some Pegged Token and then transfer governance to the real governor
-    const mocFlipagoV2 = await ethers.getContractAt("MocFlipago", mocFlipago.address, signer);
+    const mocFlipmoneyV2 = await ethers.getContractAt("MocFlipmoney", mocFlipmoney.address, signer);
     for (let tpParam of tpParams.tpParams) {
       if (!tpParam.priceProvider) {
         const tpPriceProvider = await deploy("PriceProviderMock", {
@@ -193,13 +193,13 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
         console.log(`Deploying Fake PriceProvider for ${tpParam.name} at ${tpPriceProvider.address}`);
       }
     }
-    await addPeggedTokensAndChangeGovernor(hre, governorAddress, mocFlipagoV2, tpParams);
+    await addPeggedTokensAndChangeGovernor(hre, governorAddress, mocFlipmoneyV2, tpParams);
   }
 
   return hre.network.live; // prevents re execution on live networks
 };
 export default deployFunc;
 
-deployFunc.id = "deployed_MocFlipago"; // id required to prevent re-execution
-deployFunc.tags = ["MocFlipagoDeploy"];
-deployFunc.dependencies = ["MocFlipagoExpansion"];
+deployFunc.id = "deployed_MocFlipmoney"; // id required to prevent re-execution
+deployFunc.tags = ["MocFlipmoneyDeploy"];
+deployFunc.dependencies = ["MocFlipmoneyExpansion"];

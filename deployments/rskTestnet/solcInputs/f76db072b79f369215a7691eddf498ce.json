@@ -130,8 +130,8 @@
     "contracts/interfaces/IDataProvider.sol": {
       "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.20;\n\n/**\n * @title IDataProvider\n * @notice Generic interface, to query for any bytes32 sized data from an external provider\n */\ninterface IDataProvider {\n    /**\n     * @notice returns the given `data` if `valid`\n     * @param data peeked\n     * @param valid true if the data is valid\n     */\n    function peek() external view returns (bytes32 data, bool valid);\n}\n"
     },
-    "contracts/MocFlipago.sol": {
-      "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.20;\n\nimport { MocCARC20 } from \"moc-main/contracts/collateral/rc20/MocCARC20.sol\";\n\ncontract MocFlipago is MocCARC20 {\n    error protocolAlreadyMigrated();\n\n\n}\n"
+    "contracts/MocFlipmoney.sol": {
+      "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.20;\n\nimport { MocCARC20 } from \"moc-main/contracts/collateral/rc20/MocCARC20.sol\";\n\ncontract MocFlipmoney is MocCARC20 {\n    error protocolAlreadyMigrated();\n\n\n}\n"
     },
     "contracts/providers/FCMaxAbsoluteOpProvider.sol": {
       "content": "// SPDX-License-Identifier: UNLICENSED\npragma solidity 0.8.20;\n\nimport { Ownable } from \"@openzeppelin/contracts/access/Ownable.sol\";\nimport { IDataProvider } from \"../interfaces/IDataProvider.sol\";\n\n/**\n * @title Flux Capacitor Operation Absolute Maximum DataProvider\n * @notice Allows the Owner, to set the value so that the protocol cold peek it.\n */\ncontract FCMaxAbsoluteOpProvider is Ownable, IDataProvider {\n    bytes32 public data;\n\n    constructor(address owner_) Ownable() {\n        _transferOwnership(owner_);\n    }\n\n    function peek() external view returns (bytes32, bool) {\n        return (data, true);\n    }\n\n    function setMaxAbsoluteOperation(uint256 data_) external onlyOwner {\n        data = bytes32(data_);\n    }\n}\n"
