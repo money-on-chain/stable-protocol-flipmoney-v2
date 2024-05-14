@@ -14,7 +14,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
   const { deployer } = await getNamedAccounts();
   const deployParams = getNetworkDeployParams(hre);
   if (!deployParams.deploy) throw new Error("No deploy params config found.");
-  const { mocAddresses, coreParams, settlementParams, feeParams, ctParams, queueParams, tpParams, gasLimit } =
+  const { mocAddresses, coreParams, settlementParams, feeParams, ctParams, queueParams, tpParams, gasLimit, feesSplitterParams, tcInterestsSplitterParams } =
     deployParams.deploy;
   const signer = ethers.provider.getSigner();
 
@@ -112,6 +112,53 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     maxOpDiffProviderAddress = deployImplResult.address;
   }
 
+  if (!mocFeeFlowAddress) {
+
+    const initializeArgs = [
+      governorAddress,
+      collateralAssetAddress,
+      feeTokenAddress,
+      feesSplitterParams.acTokenAddressRecipient1,
+      feesSplitterParams.acTokenAddressRecipient2,
+      feesSplitterParams.acTokenPctToRecipient1,
+      feesSplitterParams.feeTokenAddressRecipient1,
+      feesSplitterParams.feeTokenAddressRecipient2,
+      feesSplitterParams.feeTokenPctToRecipient1,
+    ];
+
+    const feesSplitter = await deployUUPSArtifact({
+      hre,
+      artifactBaseName: "FeesSplitter",
+      contract: "CommissionSplitter",
+      initializeArgs,
+    });
+
+    console.log(`FeesSplitter deployed at ${feesSplitter.address} with:`, initializeArgs);
+    mocFeeFlowAddress = feesSplitter.address;
+  }
+
+  if (!tcInterestCollectorAddress) {
+    const initializeArgs = [
+      governorAddress,
+      collateralAssetAddress,
+      feeTokenAddress,
+      tcInterestsSplitterParams.acTokenAddressRecipient1,
+      tcInterestsSplitterParams.acTokenAddressRecipient2,
+      tcInterestsSplitterParams.acTokenPctToRecipient1,
+      tcInterestsSplitterParams.feeTokenAddressRecipient1,
+      tcInterestsSplitterParams.feeTokenAddressRecipient2,
+      tcInterestsSplitterParams.feeTokenPctToRecipient1,
+    ];
+    const tcInterestsSplitter = await deployUUPSArtifact({
+      hre,
+      artifactBaseName: "TCInterestsSplitter",
+      contract: "CommissionSplitter",
+      initializeArgs,
+    });
+    console.log(`TCInterestsSplitter deployed at ${tcInterestsSplitter.address} with:`, initializeArgs);
+    tcInterestCollectorAddress = tcInterestsSplitter.address;
+  }
+
   const initializeArgs = [
     {
       initializeCoreParams: {
@@ -142,6 +189,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
           decayBlockSpan: coreParams.decayBlockSpan,
           maxAbsoluteOpProviderAddress,
           maxOpDiffProviderAddress,
+          allowDifferentRecipient: coreParams.allowDifferentRecipient,
         },
         governorAddress: tpParams ? governorMock : governorAddress, // Use mock to add TPs
         pauserAddress: stopperAddress,

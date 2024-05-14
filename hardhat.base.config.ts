@@ -27,6 +27,7 @@ export type MigrateParameters = {
     decayBlockSpan: number;
     successFee: BigNumber;
     appreciationFactor: BigNumber;
+    allowDifferentRecipient: boolean;
   };
   mocAddresses: {
     mocAppreciationBeneficiaryAddress: Address;
@@ -67,6 +68,7 @@ const chainIds = {
   mainnet: 1,
   rinkeby: 4,
   ropsten: 3,
+  rskMainnet: 30,
   rskTestnet: 31,
   polygonMumbai: 80001,
 };

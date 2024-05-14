@@ -40,6 +40,7 @@ export const rskTestnetDeployParams: DeployParameters = {
     tcInterestRate: PCT_BASE.mul(5).div(100000), // 0.005% : weekly 0.0025 / 365 * 7
     tcInterestPaymentBlockSpan: WEEK_BLOCK_SPAN,
     decayBlockSpan: DAY_BLOCK_SPAN,
+    allowDifferentRecipient: true,
   },
   settlementParams: {
     bes: MONTH_BLOCK_SPAN,
@@ -89,12 +90,28 @@ export const rskTestnetDeployParams: DeployParameters = {
     pauserAddress: "0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca", // if not provided is set to deployer
     feeTokenAddress: "0xf698561a2c88F4B057f1D5A5285B9cc38fE61D76",
     feeTokenPriceProviderAddress: "0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E",
-    mocFeeFlowAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    mocFeeFlowAddress: "",
     mocAppreciationBeneficiaryAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
     vendorsGuardianAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
-    tcInterestCollectorAddress: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    tcInterestCollectorAddress: "",
     maxAbsoluteOpProviderAddress: "", // if not provided a new FCMaxAbsoluteOpProvider.sol will be deployed with pauser as owner
     maxOpDiffProviderAddress: "", // if not provided a new FCMaxOpDifferenceProvider.sol will be deployed with pauser as owner
+  },
+  feesSplitterParams: {
+    acTokenAddressRecipient1: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    acTokenAddressRecipient2: "0xb5e2bed9235b6366fa0254c2e6754e167e0a2383",
+    acTokenPctToRecipient1: PCT_BASE.div(2),
+    feeTokenAddressRecipient1: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    feeTokenAddressRecipient2: "0xb5e2bed9235b6366fa0254c2e6754e167e0a2383",
+    feeTokenPctToRecipient1: PCT_BASE.div(2),
+  },
+  tcInterestsSplitterParams: {
+    acTokenAddressRecipient1: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    acTokenAddressRecipient2: "0xb5e2bed9235b6366fa0254c2e6754e167e0a2383",
+    acTokenPctToRecipient1: PCT_BASE.div(2),
+    feeTokenAddressRecipient1: "0xcd8a1c9acc980ae031456573e34dc05cd7dae6e3",
+    feeTokenAddressRecipient2: "0xb5e2bed9235b6366fa0254c2e6754e167e0a2383",
+    feeTokenPctToRecipient1: PCT_BASE.div(2),
   },
   ...commonParams,
 };
