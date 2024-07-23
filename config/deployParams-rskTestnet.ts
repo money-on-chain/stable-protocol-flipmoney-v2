@@ -55,7 +55,7 @@ export const rskTestnetDeployParams: DeployParameters = {
     swapTCforTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
     redeemTCandTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
     mintTCandTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
-    feeTokenPct: PCT_BASE.mul(100).div(100), // 100% (Using feeToken gives 0% cheaper fees)
+    feeTokenPct: PCT_BASE.mul(99).div(100), // 100% (Using feeToken gives 0% cheaper fees)
   },
   ctParams: {
     name: "BPro Max",
