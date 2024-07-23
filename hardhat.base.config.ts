@@ -27,11 +27,13 @@ export type MigrateParameters = {
     decayBlockSpan: number;
     successFee: BigNumber;
     appreciationFactor: BigNumber;
+    allowDifferentRecipient: boolean;
   };
   mocAddresses: {
     mocAppreciationBeneficiaryAddress: Address;
     maxAbsoluteOpProviderAddress?: Address;
     maxOpDiffProviderAddress?: Address;
+    mocVendorsAddress?: Address;
   };
   feeParams: {
     feeRetainer: BigNumber;
@@ -68,6 +70,7 @@ const chainIds = {
   rinkeby: 4,
   ropsten: 3,
   rskTestnet: 31,
+  rskMainnet: 30,
   polygonMumbai: 80001,
 };
 
