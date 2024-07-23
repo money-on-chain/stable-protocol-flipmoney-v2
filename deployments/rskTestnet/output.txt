@@ -1,0 +1,64 @@
+MocFlipmoneyExpansion, as MocCoreExpansion implementation deployed at 0x643e4F3355abca17F5191ed695dDb6a64c098490
+using a governorMock for MocFlipmoney at: 0x6Ca74A4DDBC74a85082DA8Ba63Baa53E9305d58A
+MocTC, as CollateralToken implementation deployed at 0x174B7cFBA44eA197cB6b5678179B336b4f2eD5C7
+CollateralTokenProxy ERC1967Proxy deployed at 0xAA6275bf45864310E89ee30f46601c4dFD8d2Ae0
+MocQueue, as MocFlipmoneyQueue implementation deployed at 0x5234143a15Cf63B2873214E5E23b23c2983BE092
+MocFlipmoneyQueueProxy ERC1967Proxy deployed at 0x2FC97dFE6968252D6fBC02100055090D8D101948
+MocVendors, as MocFlipmoneyVendors implementation deployed at 0x56215826eBd6a26c6Aa669930a0a108a8086A90E
+MocFlipmoneyVendorsProxy ERC1967Proxy deployed at 0x5927ac2FcEdA47d5e66Ec6570623964864237A58
+FCMaxAbsoluteOpProvider deployed at 0x8e9e2624eABeBe28A11Cd9945139fA68C935a651 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+FCMaxOpDifferenceProvider deployed at 0x321C03f9456356C5D899F890481d1C940608ab38 with owner at 0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca
+Initializing MocFlipmoney with: {
+  initializeCoreParams: {
+    initializeBaseBucketParams: {
+      mocQueueAddress: '0x2FC97dFE6968252D6fBC02100055090D8D101948',
+      feeTokenAddress: '0xf698561a2c88F4B057f1D5A5285B9cc38fE61D76',
+      feeTokenPriceProviderAddress: '0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E',
+      tcTokenAddress: '0xAA6275bf45864310E89ee30f46601c4dFD8d2Ae0',
+      mocFeeFlowAddress: '0xf69287F5Ca3cC3C6d3981f2412109110cB8af076',
+      mocAppreciationBeneficiaryAddress: '0xf69287F5Ca3cC3C6d3981f2412109110cB8af076',
+      protThrld: BigNumber { value: "1500000000000000000" },
+      liqThrld: BigNumber { value: "1040000000000000000" },
+      feeRetainer: BigNumber { value: "100000000000000000" },
+      tcMintFee: BigNumber { value: "1000000000000000" },
+      tcRedeemFee: BigNumber { value: "1000000000000000" },
+      swapTPforTPFee: BigNumber { value: "1000000000000000" },
+      swapTPforTCFee: BigNumber { value: "1000000000000000" },
+      swapTCforTPFee: BigNumber { value: "1000000000000000" },
+      redeemTCandTPFee: BigNumber { value: "1000000000000000" },
+      mintTCandTPFee: BigNumber { value: "1000000000000000" },
+      feeTokenPct: BigNumber { value: "990000000000000000" },
+      successFee: BigNumber { value: "0" },
+      appreciationFactor: BigNumber { value: "0" },
+      bes: 2880,
+      tcInterestCollectorAddress: '0xf69287F5Ca3cC3C6d3981f2412109110cB8af076',
+      tcInterestRate: BigNumber { value: "200000000000000" },
+      tcInterestPaymentBlockSpan: 20160,
+      decayBlockSpan: 720,
+      maxAbsoluteOpProviderAddress: '0x8e9e2624eABeBe28A11Cd9945139fA68C935a651',
+      maxOpDiffProviderAddress: '0x321C03f9456356C5D899F890481d1C940608ab38',
+      allowDifferentRecipient: true
+    },
+    governorAddress: '0x6Ca74A4DDBC74a85082DA8Ba63Baa53E9305d58A',
+    pauserAddress: '0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca',
+    mocCoreExpansion: '0x643e4F3355abca17F5191ed695dDb6a64c098490',
+    emaCalculationBlockSpan: 2880,
+    mocVendors: '0x5927ac2FcEdA47d5e66Ec6570623964864237A58'
+  },
+  acTokenAddress: '0x4dA7997A819bb46B6758B9102234c289dD2Ad3bf'
+}
+MocFlipmoney, as MocFlipmoney implementation deployed at 0xCB00FaCD8348731c9a7891a079C005d18F07aDb4
+MocFlipmoneyProxy ERC1967Proxy deployed at 0x4942c54681CA758279591dF69b6B393D25830C67
+Delegating CT roles to Moc
+Registering mocFlipmoney bucket as enqueuer: 0x4942c54681CA758279591dF69b6B393D25830C67
+Restating Queue governor: 0x4eAC4518e81B3A5198aADAb998D2610B46aAA609 after registration
+MocRC20, as Argentinian Peso implementation deployed at 0x6Fd4A7F1A975210F642A995AA46fF263241014b0
+Argentinian PesoProxy ERC1967Proxy deployed at 0xd889b2eDD4e64E6194a194b7410BE5c6532168Dc
+Initializing Argentinian Peso PeggedToken...
+Adding Argentinian Peso as PeggedToken 0...
+MocRC20, as Colombian Peso implementation deployed at 0x10B503D661FB0769257b20011EAA36A3FFB178F7
+Colombian PesoProxy ERC1967Proxy deployed at 0x611fAdC3C48bC94f7a64D1CD3e58fe4f7f460f58
+Initializing Colombian Peso PeggedToken...
+Adding Colombian Peso as PeggedToken 1...
+Renouncing temp governance...
+mocCore governor is now: 0x4eAC4518e81B3A5198aADAb998D2610B46aAA609

@@ -31,6 +31,7 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
     mocAppreciationBeneficiaryAddress,
     tcInterestCollectorAddress,
     vendorsGuardianAddress,
+    mocVendorsAddress,
     maxAbsoluteOpProviderAddress,
     maxOpDiffProviderAddress,
   } = mocAddresses;
@@ -85,12 +86,15 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
 
   const mocQueueProxy = await ethers.getContractAt("MocQueue", mocQueue.address, signer);
 
-  const mocVendorsDeployed = await deployUUPSArtifact({
-    hre,
-    artifactBaseName: "MocFlipmoneyVendors",
-    contract: "MocVendors",
-    initializeArgs: [vendorsGuardianAddress, governorAddress, pauserAddress],
-  });
+  if (!mocVendorsAddress) {
+    const mocVendorsDeployed = await deployUUPSArtifact({
+      hre,
+      artifactBaseName: "MocFlipmoneyVendors",
+      contract: "MocVendors",
+      initializeArgs: [vendorsGuardianAddress, governorAddress, pauserAddress],
+    });
+    mocVendorsAddress = mocVendorsDeployed.address;
+  }
 
   if (!maxAbsoluteOpProviderAddress) {
     const deployImplResult = await deploy("FCMaxAbsoluteOpProvider", {
@@ -142,12 +146,13 @@ const deployFunc: DeployFunction = async (hre: HardhatRuntimeEnvironment) => {
           decayBlockSpan: coreParams.decayBlockSpan,
           maxAbsoluteOpProviderAddress,
           maxOpDiffProviderAddress,
+          allowDifferentRecipient: coreParams.allowDifferentRecipient,
         },
         governorAddress: tpParams ? governorMock : governorAddress, // Use mock to add TPs
         pauserAddress: stopperAddress,
         mocCoreExpansion: deployedMocExpansionContract.address,
         emaCalculationBlockSpan: coreParams.emaCalculationBlockSpan,
-        mocVendors: mocVendorsDeployed.address,
+        mocVendors: mocVendorsAddress,
       },
       acTokenAddress: collateralAssetAddress,
     },

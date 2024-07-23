@@ -27,11 +27,13 @@ export type MigrateParameters = {
     decayBlockSpan: number;
     successFee: BigNumber;
     appreciationFactor: BigNumber;
+    allowDifferentRecipient: boolean;
   };
   mocAddresses: {
     mocAppreciationBeneficiaryAddress: Address;
     maxAbsoluteOpProviderAddress?: Address;
     maxOpDiffProviderAddress?: Address;
+    mocVendorsAddress?: Address;
   };
   feeParams: {
     feeRetainer: BigNumber;
@@ -68,6 +70,7 @@ const chainIds = {
   rinkeby: 4,
   ropsten: 3,
   rskTestnet: 31,
+  rskMainnet: 30,
   polygonMumbai: 80001,
 };
 
@@ -109,7 +112,7 @@ const config: HardhatUserConfig = {
     rskTestnet: {
       accounts: process.env.PK ? [`0x${process.env.PK}`] : { mnemonic },
       chainId: chainIds.rskTestnet,
-      url: "https://public-node.testnet.rsk.co",
+      url: "http://localhost:4454",
       deployParameters: { deploy: rskTestnetDeployParams },
       tags: ["testnet"],
     },
