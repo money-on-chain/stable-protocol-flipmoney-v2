@@ -55,7 +55,7 @@ export const rskTestnetDeployParams: DeployParameters = {
     swapTCforTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
     redeemTCandTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
     mintTCandTPFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
-    feeTokenPct: PCT_BASE.mul(99).div(100), // 100% (Using feeToken gives 0% cheaper fees)
+    feeTokenPct: PCT_BASE.mul(80).div(100), // 80% (Using feeToken gives 0% cheaper fees)
   },
   ctParams: {
     name: "BPro Max",
@@ -70,7 +70,7 @@ export const rskTestnetDeployParams: DeployParameters = {
         ctarg: PCT_BASE.mul(100).div(10), // 10.0
         mintFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
         redeemFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
-        initialEma: PCT_BASE.mul(1000), // 1000
+        initialEma: PCT_BASE.mul(100738424), // Bpro price in USD * EMA
         smoothingFactor: PCT_BASE.mul(1653).div(100000), // 0.01653 (2/(120+1))
       },
       {
@@ -80,7 +80,7 @@ export const rskTestnetDeployParams: DeployParameters = {
         ctarg: PCT_BASE.mul(100).div(10), // 10.0
         mintFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
         redeemFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
-        initialEma: PCT_BASE.mul(3200), // 3200
+        initialEma: PCT_BASE.mul(314767344), // Bpro price in USD * EMA
         smoothingFactor: PCT_BASE.mul(1653).div(100000), // 0.01653 (2/(120+1))
       }
     ],
