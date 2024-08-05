@@ -99,5 +99,11 @@ export const rskTestnetDeployParams: DeployParameters = {
     maxAbsoluteOpProviderAddress: "", // if not provided a new FCMaxAbsoluteOpProvider.sol will be deployed with pauser as owner
     maxOpDiffProviderAddress: "", // if not provided a new FCMaxOpDifferenceProvider.sol will be deployed with pauser as owner
   },
+  changers: {
+    priceProviderFeeToken: {
+      mocAddress: "0x1D316199a07962A06ec59D8d10990403f0330485",
+      priceProvider: "0xaE819b8e28Eee6D60B6E2F864620eb7b73C982c1"
+    }
+  },
   ...commonParams,
 };

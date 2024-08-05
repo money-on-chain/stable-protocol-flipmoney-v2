@@ -112,7 +112,7 @@ const config: HardhatUserConfig = {
     rskTestnet: {
       accounts: process.env.PK ? [`0x${process.env.PK}`] : { mnemonic },
       chainId: chainIds.rskTestnet,
-      url: "http://localhost:4454",
+      url: "https://public-node.testnet.rsk.co",
       deployParameters: { deploy: rskTestnetDeployParams },
       tags: ["testnet"],
     },
