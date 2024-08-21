@@ -19,6 +19,7 @@ import { DeployParameters } from "moc-main/export/scripts/types";
 import { hardhatDeployParams } from "./config/deployParams-hardhat";
 import { developmentMigrateParams } from "./config/deployParams-development";
 import { rskTestnetDeployParams } from "./config/deployParams-rskTestnet";
+import { rskMainnetDeployParams } from "./config/deployParams-rskMainnet";
 
 dotenvConfig({ path: resolve(__dirname, "./.env") });
 
@@ -112,9 +113,16 @@ const config: HardhatUserConfig = {
     rskTestnet: {
       accounts: process.env.PK ? [`0x${process.env.PK}`] : { mnemonic },
       chainId: chainIds.rskTestnet,
-      url: "http://localhost:4454",
+      url: "https://public-node.testnet.rsk.co",
       deployParameters: { deploy: rskTestnetDeployParams },
       tags: ["testnet"],
+    },
+    rskMainnet: {
+      accounts: process.env.PK ? [`0x${process.env.PK}`] : { mnemonic },
+      chainId: chainIds.rskMainnet,
+      url: "https://public-node.rsk.co",
+      deployParameters: { deploy: rskMainnetDeployParams },
+      tags: ["mainnet"],
     },
   },
   paths: {

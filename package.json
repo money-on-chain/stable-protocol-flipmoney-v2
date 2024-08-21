@@ -11,7 +11,7 @@
     "hardhat-deploy": "0.11.30",
     "hardhat-storage-layout": "0.1.7",
     "solc": "0.8.20",
-    "moc-main": "github:money-on-chain/stable-protocol-core-v2#v1.0.6"
+    "moc-main": "github:money-on-chain/main-sc-protocol-v2#change-fee-token"
   },
   "devDependencies": {
     "@commitlint/cli": "17.6.3",
@@ -80,6 +80,9 @@
     "release": "standard-version",
     "docgen": "hardhat docgen",
     "deploy-localhost": "hardhat deploy --tags MocFlipmoneyDeploy",
-    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy"
+    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy",
+    "deploy-changer-feetoken-rskTestnet": "hardhat deploy --network rskTestnet --tags ChangerPriceProviderFeeToken",
+    "deploy-changer-execfeeparams-rskTestnet": "hardhat deploy --network rskTestnet --tags UpdateExecutionFeeChangerTemplate",
+    "deploy-changer-execfeeparams-rskMainnet": "hardhat deploy --network rskMainnet --tags UpdateExecutionFeeChangerTemplate"
   }
 }
