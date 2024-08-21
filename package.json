@@ -80,6 +80,7 @@
     "release": "standard-version",
     "docgen": "hardhat docgen",
     "deploy-localhost": "hardhat deploy --tags MocFlipmoneyDeploy",
-    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy"
+    "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy",
+    "deploy-rskMainnet": "hardhat deploy --network rskMainnet --tags MocFlipmoneyDeploy"
   }
 }

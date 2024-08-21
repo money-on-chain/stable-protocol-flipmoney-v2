@@ -1,0 +1,64 @@
+MocFlipmoneyExpansion, as MocCoreExpansion implementation deployed at 0xfEA63380D9C3d2444d240065057d2b77749Abe90
+using a governorMock for MocFlipmoney at: 0x10fC9b09dD3B6e3ABc9AF34Dd90E31d950688ec4
+MocTC, as CollateralToken implementation deployed at 0xdcc4c2a460d3C5075108f5b20fA019cC6352a23F
+CollateralTokenProxy ERC1967Proxy deployed at 0xd86E777Bd6A3C9e15948DE0394094f12ceF0fAe1
+MocQueue, as MocFlipmoneyQueue implementation deployed at 0x314Ace90D6F15E89d041C050a49Adb7de205488D
+MocFlipmoneyQueueProxy ERC1967Proxy deployed at 0x87252A0135BeD925068791D8ca1293C89505Ff61
+MocVendors, as MocFlipmoneyVendors implementation deployed at 0x87aC217A258D3286721Bd7B173D17B5258D90aB6
+MocFlipmoneyVendorsProxy ERC1967Proxy deployed at 0x09662e940650E087c2Cd82b3967b07c30d655Fb4
+FCMaxAbsoluteOpProvider deployed at 0x6C5CDB738Bcf758E1AC994A78Be13DDB6D39DF77 with owner at 0x40662eD57284B4B541A42D347BE2447ABd1b119d
+FCMaxOpDifferenceProvider deployed at 0x513fD43Aa123c380788D6D5d3Db6ABb5bbe03A91 with owner at 0x40662eD57284B4B541A42D347BE2447ABd1b119d
+Initializing MocFlipmoney with: {
+  initializeCoreParams: {
+    initializeBaseBucketParams: {
+      mocQueueAddress: '0x87252A0135BeD925068791D8ca1293C89505Ff61',
+      feeTokenAddress: '0xe65E1Cbb6eb5CD2003717af7Ee9F3BdeF3ABfEC5',
+      feeTokenPriceProviderAddress: '0x305dB451317ac8F7571a1f267F8617802933648D',
+      tcTokenAddress: '0xd86E777Bd6A3C9e15948DE0394094f12ceF0fAe1',
+      mocFeeFlowAddress: '0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128',
+      mocAppreciationBeneficiaryAddress: '0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128',
+      protThrld: BigNumber { value: "1500000000000000000" },
+      liqThrld: BigNumber { value: "1040000000000000000" },
+      feeRetainer: BigNumber { value: "100000000000000000" },
+      tcMintFee: BigNumber { value: "1000000000000000" },
+      tcRedeemFee: BigNumber { value: "1000000000000000" },
+      swapTPforTPFee: BigNumber { value: "1000000000000000" },
+      swapTPforTCFee: BigNumber { value: "1000000000000000" },
+      swapTCforTPFee: BigNumber { value: "1000000000000000" },
+      redeemTCandTPFee: BigNumber { value: "1000000000000000" },
+      mintTCandTPFee: BigNumber { value: "1000000000000000" },
+      feeTokenPct: BigNumber { value: "800000000000000000" },
+      successFee: BigNumber { value: "0" },
+      appreciationFactor: BigNumber { value: "0" },
+      bes: 2880,
+      tcInterestCollectorAddress: '0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128',
+      tcInterestRate: BigNumber { value: "200000000000000" },
+      tcInterestPaymentBlockSpan: 20160,
+      decayBlockSpan: 720,
+      maxAbsoluteOpProviderAddress: '0x6C5CDB738Bcf758E1AC994A78Be13DDB6D39DF77',
+      maxOpDiffProviderAddress: '0x513fD43Aa123c380788D6D5d3Db6ABb5bbe03A91',
+      allowDifferentRecipient: true
+    },
+    governorAddress: '0x10fC9b09dD3B6e3ABc9AF34Dd90E31d950688ec4',
+    pauserAddress: '0x40662eD57284B4B541A42D347BE2447ABd1b119d',
+    mocCoreExpansion: '0xfEA63380D9C3d2444d240065057d2b77749Abe90',
+    emaCalculationBlockSpan: 2880,
+    mocVendors: '0x09662e940650E087c2Cd82b3967b07c30d655Fb4'
+  },
+  acTokenAddress: '0x440CD83C160De5C96Ddb20246815eA44C7aBBCa8'
+}
+MocFlipmoney, as MocFlipmoney implementation deployed at 0xD1fEBF417894c0e5b4D7Dafab0887C400A9f7dDc
+MocFlipmoneyProxy ERC1967Proxy deployed at 0xEC766E9BAdcdE53B01118F1D5Ba56295A62e2C6D
+Delegating CT roles to Moc
+Registering mocFlipmoney bucket as enqueuer: 0xEC766E9BAdcdE53B01118F1D5Ba56295A62e2C6D
+Restating Queue governor: 0xC61F0392d5170214b5D93C0BC4c4354163aBC1f7 after registration
+MocRC20, as ArsFlip implementation deployed at 0x596bA6D4A35fBBf0846466dFfB30cdC9Ba457083
+ArsFlipProxy ERC1967Proxy deployed at 0xCb60a3904D4d4f3F0F085cb934fD9C1f718D5299
+Initializing ArsFlip PeggedToken...
+Adding ArsFlip as PeggedToken 0...
+MocRC20, as CopFlip implementation deployed at 0x5A7Ac1E643f29FFA871b080D90D47B9FbEE4dBc9
+CopFlipProxy ERC1967Proxy deployed at 0x382c82b14a0b688Fd064F5BeF3c86CB1dBDBE78c
+Initializing CopFlip PeggedToken...
+Adding CopFlip as PeggedToken 1...
+Renouncing temp governance...
+mocCore governor is now: 0xC61F0392d5170214b5D93C0BC4c4354163aBC1f7
