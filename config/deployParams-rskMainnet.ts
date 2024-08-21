@@ -31,7 +31,7 @@ const commonParams = {
 };
 
 
-export const rskTestnetDeployParams: DeployParameters = {
+export const rskMainnetDeployParams: DeployParameters = {
   coreParams: {
     protThrld: PCT_BASE.mul(15).div(10), // 1.5
     liqThrld: PCT_BASE.mul(104).div(100), // 1.04
@@ -64,9 +64,9 @@ export const rskTestnetDeployParams: DeployParameters = {
   tpParams: {
     tpParams: [
       {
-        name: "Argentinian Peso",
+        name: "ArsFlip",
         symbol: "ArsFlip",
-        priceProvider: "0xA9Fd4d4a251D041b2991bf42B3D72ABc9E97F889".toLowerCase(),
+        priceProvider: "0x39d7eF05ff67e2702aD5846DC7874E17fB0E51bF".toLowerCase(),
         ctarg: PCT_BASE.mul(100).div(10), // 10.0
         mintFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
         redeemFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
@@ -74,9 +74,9 @@ export const rskTestnetDeployParams: DeployParameters = {
         smoothingFactor: PCT_BASE.mul(1653).div(100000), // 0.01653 (2/(120+1))
       },
       {
-        name: "Colombian Peso",
+        name: "CopFlip",
         symbol: "CopFlip",
-        priceProvider: "0x69aeA1291AA7Ed13c0Ff1b8485926030fde9417A".toLowerCase(),
+        priceProvider: "0x7DC92607c57403e663d06D9EBe6Af3d2d73519dD".toLowerCase(),
         ctarg: PCT_BASE.mul(100).div(10), // 10.0
         mintFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
         redeemFee: PCT_BASE.mul(1).div(1000), // 0.001 = 0.1%
@@ -86,31 +86,31 @@ export const rskTestnetDeployParams: DeployParameters = {
     ],
   },
   mocAddresses: {
-    governorAddress: "0x4eAC4518e81B3A5198aADAb998D2610B46aAA609", // if not provided a new GovernorMock.sol is deployed
-    collateralAssetAddress: "0x4dA7997A819bb46B6758B9102234c289dD2Ad3bf",
-    pauserAddress: "0x5bCdf8A2E61BD238AEe43b99962Ee8BfBda1Beca", // if not provided is set to deployer
-    feeTokenAddress: "0xf698561a2c88F4B057f1D5A5285B9cc38fE61D76",
-    feeTokenPriceProviderAddress: "0x8DCE78BbD4D757EF7777Be113277cf5A35283b1E",
-    mocFeeFlowAddress: "0xf69287F5Ca3cC3C6d3981f2412109110cB8af076",
-    mocAppreciationBeneficiaryAddress: "0xf69287F5Ca3cC3C6d3981f2412109110cB8af076",
-    vendorsGuardianAddress: "0xf69287F5Ca3cC3C6d3981f2412109110cB8af076",
-    tcInterestCollectorAddress: "0xf69287F5Ca3cC3C6d3981f2412109110cB8af076",
+    governorAddress: "0xC61F0392d5170214b5D93C0BC4c4354163aBC1f7", // if not provided a new GovernorMock.sol is deployed
+    collateralAssetAddress: "0x440CD83C160De5C96Ddb20246815eA44C7aBBCa8",
+    pauserAddress: "0x40662eD57284B4B541A42D347BE2447ABd1b119d", // if not provided is set to deployer
+    feeTokenAddress: "0xe65E1Cbb6eb5CD2003717af7Ee9F3BdeF3ABfEC5",
+    feeTokenPriceProviderAddress: "0x305dB451317ac8F7571a1f267F8617802933648D",
+    mocFeeFlowAddress: "0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128",
+    mocAppreciationBeneficiaryAddress: "0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128",
+    vendorsGuardianAddress: "0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128",
+    tcInterestCollectorAddress: "0xC61820bFB8F87391d62Cd3976dDc1d35e0cf7128",
     mocVendorsAddress: "", // if not provided a new MocVendors will be deployed
     maxAbsoluteOpProviderAddress: "", // if not provided a new FCMaxAbsoluteOpProvider.sol will be deployed with pauser as owner
     maxOpDiffProviderAddress: "", // if not provided a new FCMaxOpDifferenceProvider.sol will be deployed with pauser as owner
   },
   changers: {
     priceProviderFeeToken: {
-      mocAddress: "0x1D316199a07962A06ec59D8d10990403f0330485",
-      priceProvider: "0xaE819b8e28Eee6D60B6E2F864620eb7b73C982c1"
+      mocAddress: "",
+      priceProvider: ""
     },
     UpdateExecutionFeeChangerTemplate: {
-      mocQueueAddress: "0x7124A89A06E02A5f0623d38fd106880A8A4FBC0c",
+      mocQueueAddress: "0x87252A0135BeD925068791D8ca1293C89505Ff61",
       execFeeParams: {
         tcMintExecFee: BigNumber.from("450000").mul(gasPrice),
-        tcRedeemExecFee: BigNumber.from("400000").mul(gasPrice),
-        tpMintExecFee: BigNumber.from("500000").mul(gasPrice),
-        tpRedeemExecFee: BigNumber.from("500000").mul(gasPrice),
+        tcRedeemExecFee: BigNumber.from("450000").mul(gasPrice),
+        tpMintExecFee: BigNumber.from("450000").mul(gasPrice),
+        tpRedeemExecFee: BigNumber.from("450000").mul(gasPrice),
         mintTCandTPExecFee: BigNumber.from("600000").mul(gasPrice),
         redeemTCandTPExecFee: BigNumber.from("600000").mul(gasPrice),
         swapTPforTPExecFee: BigNumber.from("600000").mul(gasPrice),

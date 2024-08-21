@@ -81,6 +81,8 @@
     "docgen": "hardhat docgen",
     "deploy-localhost": "hardhat deploy --tags MocFlipmoneyDeploy",
     "deploy-rskTestnet": "hardhat deploy --network rskTestnet --tags MocFlipmoneyDeploy",
-    "deploy-changer-feetoken-rskTestnet": "hardhat deploy --network rskTestnet --tags ChangerPriceProviderFeeToken"
+    "deploy-changer-feetoken-rskTestnet": "hardhat deploy --network rskTestnet --tags ChangerPriceProviderFeeToken",
+    "deploy-changer-execfeeparams-rskTestnet": "hardhat deploy --network rskTestnet --tags UpdateExecutionFeeChangerTemplate",
+    "deploy-changer-execfeeparams-rskMainnet": "hardhat deploy --network rskMainnet --tags UpdateExecutionFeeChangerTemplate"
   }
 }
