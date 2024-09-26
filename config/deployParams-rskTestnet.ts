@@ -104,6 +104,10 @@ export const rskTestnetDeployParams: DeployParameters = {
       mocAddress: "0x1D316199a07962A06ec59D8d10990403f0330485",
       priceProvider: "0xaE819b8e28Eee6D60B6E2F864620eb7b73C982c1"
     },
+    FeeTokenAddress: {
+      mocAddress: "0x1D316199a07962A06ec59D8d10990403f0330485",
+      newFeeTokenAddress: "0x18483A30dA826b5F24DdbA0a461Ff8b7a6cB6641"
+    },
     UpdateExecutionFeeChangerTemplate: {
       mocQueueAddress: "0x7124A89A06E02A5f0623d38fd106880A8A4FBC0c",
       execFeeParams: {
